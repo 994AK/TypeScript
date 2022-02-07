@@ -108,3 +108,80 @@ let J: H = {
 
 console.log(J)
 ```
+
+# 函数类型
+
+## 函数定义
+> 指定参数类型与返回值
+```ts
+function hello(name:string):void {
+    console.log('hello',name)
+}
+
+hello('hahaha')
+```
+
+## 函数表达式
+> 定义函数类型
+```ts
+type SumFunc = (x:number, y:number) => number
+
+// 参数要求都是数字类型,返回类型也是数字类型
+const countNumber: SumFunc = function (a,b) {
+    return a + b
+}
+```
+
+## 函数中可选参数
+> TS要求形参与实参必须一样,不一样需要配置可选参数
+ 
+```ts
+function print(name:string,age?:number):void {
+    console.log(name,age)
+}
+
+print('haha')
+```
+
+## 函数的默认参数
+> 给参数默认值
+
+```ts
+function ajax(url:string,method:string = 'GET') {
+    console.log(url,method)
+}
+ajax('/users')
+
+```
+
+## 函数传参 剩余参数
+> 像剩余参数如何定义
+```ts
+function sum(...numbers:number[]) {
+    return console.log(numbers) // [1,2,3,4]
+}
+
+sum(1,2,3,4)
+```
+##函数重载
+> 函数提供多个函数类型定义
+
+```ts
+let obj:any ={};
+function attr(val:string):void;
+function attr(val:number):void;
+function attr(val:any):void {
+    if(typeof val === 'string') {
+        obj.name = val;
+    } else  {
+        obj.age = val;
+    }
+}
+
+attr('hahaha')
+attr(9)
+attr(String(true))
+console.log(obj) // {name:'true',age:9}
+
+
+```
