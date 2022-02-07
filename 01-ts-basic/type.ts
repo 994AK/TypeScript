@@ -115,6 +115,6 @@ console.log(objectC)
 
 let flag10; //没有值 any
 let flag11 = 123 //自动推论 number类型
-let hello = 'hello' //自动推论 string类型
+// let hello = 'hello' //自动推论 string类型
 
 
